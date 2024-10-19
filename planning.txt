@@ -1,0 +1,40 @@
+Astronomy Observation Log
+
+Collections:
+
+user
+    user_id                     | Number
+    username                    | String UNIQUE
+    contact_information         | ContactItem
+        email                   | String
+        phone_number            | String
+        preferred_contact       | String
+    equipment                   | EquipmentItem
+        equipment_type          | String
+        make                    | String
+        model                   | String
+        serial_number           | String
+    observation_log             | ObservationItem
+        observations            | [ObservationItem] (An array of observations)
+
+observation
+    object                      | String
+    object_type                 | String
+    date                        | Date
+    time                        | String
+    time_zone                   | String
+    location                    | LocationItem
+        country                 | String
+        state                   | String
+        city                    | String
+        coordinates             | CoordinateItem
+            latitude            | Number
+            longitude           | Number
+    telescope                   | TelescopeItem
+        make                    | String
+        serial_number           | String
+    weather conditions          | String
+    visibility conditions       | String
+    duration                    | String
+    notes                       | String
+    user_id                     | Number
