@@ -29,7 +29,7 @@ Content-Type: application/json
 PUT http://localhost:3000/user/671349a2980e3ea245f1d936 HTTP/1.1
 Content-Type: application/json
 
-{
+    {
         "username": "cosmic_dreamer",
         "contact_information": {
             "email": "cosmic5@gmail.com",
@@ -56,35 +56,35 @@ GET http://localhost:3000/observation/671349ed980e3ea245f1d93b
 POST http://localhost:3000/observation HTTP/1.1
 Content-Type: application/json
 
-{
-    "observation": "NGC 869 and NGC 884 - Double Cluster",
-    "object_type": "Star Cluster",
-    "date": "2024-10-18",
-    "time": "22:15",
-    "time_zone": "GMT-5",
-    "location": {
-        "country": "USA",
-        "state": "Arizona",
-        "city": "Flagstaff",
-        "coordinates": {
-            "latitude": 35.1983,
-            "longitude": -111.6513
-        }
-    },
-    "telescope": {
-        "make": "Orion",
-        "serial_number": "SN987654"
-    },
-    "weather_conditions": "Clear skies with slight breeze",
-    "visibility_conditions": "Good",
-    "duration": "1.5 hours",
-    "notes": "Both clusters were visible and resolved individual stars. Great observation despite the slight breeze."
-}
+    {
+        "observation": "NGC 869 and NGC 884 - Double Cluster",
+        "object_type": "Star Cluster",
+        "date": "2024-10-18",
+        "time": "22:15",
+        "time_zone": "GMT-5",
+        "location": {
+            "country": "USA",
+            "state": "Arizona",
+            "city": "Flagstaff",
+            "coordinates": {
+                "latitude": 35.1983,
+                "longitude": -111.6513
+            }
+        },
+        "telescope": {
+            "make": "Orion",
+            "serial_number": "SN987654"
+        },
+        "weather_conditions": "Clear skies with slight breeze",
+        "visibility_conditions": "Good",
+        "duration": "1.5 hours",
+        "notes": "Both clusters were visible and resolved individual stars. Great observation despite the slight breeze."
+    }
 ### Update ovservation duration
-PUT http://localhost:3000/observation/671349ed980e3ea245f1d93e
+PUT http://localhost:3000/observation/671349ed980e3ea245f1d93e HTTP/1.1
 Content-Type: application/json
 
-{
+    {
         "observation": "Saturn and its rings",
         "object_type": "Planet",
         "date": "2024-10-09",
@@ -109,14 +109,116 @@ Content-Type: application/json
         "notes": "Rings were visible; great experience!"
     }
 ### Delete ovservation
-DELETE http://localhost:3000/observation/6713e36e87cbe705726a5497
+DELETE http://localhost:3000/observation/6713e36e87cbe705726a5497 HTTP/1.1
   
 // PRODUCTION Deploy
 ### Get all users
-### Get user 1
-### Get user 2
-### Get user 3
-### Create user 8
-### Create user 
-### Update user
+GET https://project-two-hu6p.onrender.com/user
+### Get user by ID
+GET https://project-two-hu6p.onrender.com/user/671349a2980e3ea245f1d934
+### Create user
+POST https://project-two-hu6p.onrender.com/user HTTP/1.1
+Content-Type: application/json
+
+    {
+        "username": "celestial_wanderer",
+        "contact_information": {
+            "email": "wanderer@example.com",
+            "phone_number": "+1-345-876-1234",
+            "preferred_contact": "phone"
+        },
+        "equipment": {
+            "equipment_type": "Telescope",
+            "make": "Orion",
+            "model": "SkyQuest XT8",
+            "serial_number": "SN987654"
+        },
+        "observation_log": {
+            "observations": []
+        }
+    }
+### Update user email
+PUT https://project-two-hu6p.onrender.com/user/671349a2980e3ea245f1d936 HTTP/1.1
+Content-Type: application/json
+
+    {
+        "username": "cosmic_dreamer",
+        "contact_information": {
+            "email": "cosmicdream@gmail.com",
+            "phone_number": "+1-369-258-0147",
+            "preferred_contact": "phone"
+        },
+        "equipment": {
+            "equipment_type": "Telescope",
+            "make": "Orion",
+            "model": "StarBlast 4.5",
+            "serial_number": "SN321098"
+        },
+        "observation_log": {
+            "observations": []
+        }
+    }
 ### Delete user
+DELETE https://project-two-hu6p.onrender.com/user HTTP/1.1
+### Get all observations
+GET https://project-two-hu6p.onrender.com/observation
+### Get observation by ID
+GET https://project-two-hu6p.onrender.com/observation/671349ed980e3ea245f1d93b
+### Create observation
+POST https://project-two-hu6p.onrender.com/observation HTTP/1.1
+Content-Type: application/json
+
+    {
+        "observation": "NGC 869 and NGC 884 - Double Cluster",
+        "object_type": "Star Cluster",
+        "date": "2024-10-18",
+        "time": "22:15",
+        "time_zone": "GMT-5",
+        "location": {
+            "country": "USA",
+            "state": "Arizona",
+            "city": "Flagstaff",
+            "coordinates": {
+                "latitude": 35.1983,
+                "longitude": -111.6513
+            }
+        },
+        "telescope": {
+            "make": "Orion",
+            "serial_number": "SN987654"
+        },
+        "weather_conditions": "Clear skies with slight breeze",
+        "visibility_conditions": "Good",
+        "duration": "1.5 hours",
+        "notes": "Both clusters were visible and resolved individual stars. Great observation despite the slight breeze."
+    }
+### Update observation duration (3 hours)
+PUT https://project-two-hu6p.onrender.com/observation/671349ed980e3ea245f1d93e HTTP/1.1
+Content-Type: application/json
+
+    {
+        "observation": "Saturn and its rings",
+        "object_type": "Planet",
+        "date": "2024-10-09",
+        "time": "20:00",
+        "time_zone": "GMT-5",
+        "location": {
+            "country": "USA",
+            "state": "Illinois",
+            "city": "Chicago",
+            "coordinates": {
+                "latitude": 41.8781,
+                "longitude": -87.6298
+            }
+        },
+        "telescope": {
+            "make": "Celestron",
+            "serial_number": "SN789456"
+        },
+        "weather_conditions": "Partly cloudy",
+        "visibility_conditions": "Fair",
+        "duration": "3 hours",
+        "notes": "Rings were visible; great experience!"
+    }
+### Delete observation
+DELETE https://project-two-hu6p.onrender.com/observation HTTP/1.1
