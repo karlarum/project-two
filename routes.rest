@@ -1,0 +1,19 @@
+// LOCALHOST
+
+### Get all users
+### Get user 1 by ID
+### Get user 2 by ID
+### Get user 3 by ID
+### Create user 8
+### Update user 
+### Delete user
+  
+// PRODUCTION Deploy
+### Get all users
+### Get user 1
+### Get user 2
+### Get user 3
+### Create user 8
+### Create user 
+### Update user
+### Delete user
