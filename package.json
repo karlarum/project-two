@@ -1,20 +1,31 @@
 {
   "dependencies": {
     "express": "^4.21.1",
-    "mongodb": "^6.9.0"
+    "mongodb": "^6.9.0",
+    "swagger-ui-express": "^5.0.1"
   },
   "name": "project-two",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.11.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "swagger-autogen": "^2.23.7"
   }
 }

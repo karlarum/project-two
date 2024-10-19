@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { initDb } = require('./db/connect');
-const contactsRouter = require('./routes/contacts');
+const userRouter = require('./routes/user');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -25,7 +25,7 @@ initDb((err) => {
 
     console.log('MongoDB connected successfully.');
 
-    app.use('/contacts', contactsRouter);
+    app.use('/user', userRouter);
 
     app.listen(process.env.PORT || port, () => {
         console.log('Web Server is listening at port ' + (process.env.PORT || port));

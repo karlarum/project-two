@@ -21,8 +21,7 @@
         "weather_conditions": "Clear skies, no clouds",
         "visibility_conditions": "Excellent",
         "duration": "2 hours",
-        "notes": "Observed the Orion Nebula with great detail.",
-        "user_id": 1
+        "notes": "Observed the Orion Nebula with great detail."
     },
     {
         "observation": "Jupiter and its moons",
@@ -46,8 +45,7 @@
         "weather_conditions": "Partly cloudy",
         "visibility_conditions": "Good",
         "duration": "1 hour",
-        "notes": "Could see four of Jupiter's moons clearly.",
-        "user_id": 2
+        "notes": "Could see four of Jupiter's moons clearly."
     },
     {
         "observation": "The Andromeda Galaxy",
@@ -71,8 +69,7 @@
         "weather_conditions": "Clear skies, mild temperature",
         "visibility_conditions": "Very good",
         "duration": "1.5 hours",
-        "notes": "Saw the Andromeda Galaxy with a good amount of detail.",
-        "user_id": 3
+        "notes": "Saw the Andromeda Galaxy with a good amount of detail."
     },
     {
         "observation": "Lunar Eclipse",
@@ -96,8 +93,7 @@
         "weather_conditions": "Clear with slight haze",
         "visibility_conditions": "Good",
         "duration": "3 hours",
-        "notes": "Observed the full lunar eclipse.",
-        "user_id": 4
+        "notes": "Observed the full lunar eclipse."
     },
     {
         "observation": "Saturn and its rings",
@@ -121,8 +117,7 @@
         "weather_conditions": "Partly cloudy",
         "visibility_conditions": "Fair",
         "duration": "1 hour",
-        "notes": "Rings were visible; great experience!",
-        "user_id": 5
+        "notes": "Rings were visible; great experience!"
     },
     {
         "observation": "The Milky Way",
@@ -146,8 +141,7 @@
         "weather_conditions": "Clear and dark skies",
         "visibility_conditions": "Excellent",
         "duration": "2 hours",
-        "notes": "Beautiful view of the Milky Way; took many photos.",
-        "user_id": 6
+        "notes": "Beautiful view of the Milky Way; took many photos."
     },
     {
         "observation": "Comet Neowise",
@@ -171,7 +165,6 @@
         "weather_conditions": "Clear with no light pollution",
         "visibility_conditions": "Excellent",
         "duration": "1.5 hours",
-        "notes": "Comet was very bright and easy to see.",
-        "user_id": 7
+        "notes": "Comet was very bright and easy to see."
     }
 ]

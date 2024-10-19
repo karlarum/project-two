@@ -1,6 +1,5 @@
 [
     {
-        "user_id": 1,
         "username": "stargazer99",
         "contact_information": {
             "email": "stargazer99@example.com",
@@ -18,7 +17,6 @@
         }
     },
     {
-        "user_id": 2,
         "username": "astro_enthusiast",
         "contact_information": {
             "email": "astro_enthusiast@example.com",
@@ -36,7 +34,6 @@
         }
     },
     {
-        "user_id": 3,
         "username": "moonlight_fan",
         "contact_information": {
             "email": "moonlight_fan@example.com",
@@ -54,7 +51,6 @@
         }
     },
     {
-        "user_id": 4,
         "username": "cosmic_dreamer",
         "contact_information": {
             "email": "cosmic_dreamer@example.com",
@@ -72,7 +68,6 @@
         }
     },
     {
-        "user_id": 5,
         "username": "star_chaser",
         "contact_information": {
             "email": "star_chaser@example.com",
@@ -90,7 +85,6 @@
         }
     },
     {
-        "user_id": 6,
         "username": "galaxy_explorer",
         "contact_information": {
             "email": "galaxy_explorer@example.com",
@@ -108,7 +102,6 @@
         }
     },
     {
-        "user_id": 7,
         "username": "nebula_novice",
         "contact_information": {
             "email": "nebula_novice@example.com",
