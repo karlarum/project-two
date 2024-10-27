@@ -1,170 +1,226 @@
 [
-    {
-        "observation": "M42 - Orion Nebula",
-        "object_type": "Nebula",
-        "date": "2024-10-15",
-        "time": "21:30",
-        "time_zone": "GMT-5",
-        "location": {
-            "country": "USA",
-            "state": "California",
-            "city": "Los Angeles",
-            "coordinates": {
-                "latitude": 34.0522,
-                "longitude": -118.2437
-            }
-        },
-        "telescope": {
-            "make": "Celestron",
-            "serial_number": "SN123456"
-        },
-        "weather_conditions": "Clear skies, no clouds",
-        "visibility_conditions": "Excellent",
-        "duration": "2 hours",
-        "notes": "Observed the Orion Nebula with great detail."
+  {
+    "observation": "M42 - Orion Nebula",
+    "object_type": "Nebula",
+    "date": "2024-10-15",
+    "time": "21:30",
+    "time_zone": "GMT-5",
+    "location": {
+      "country": "USA",
+      "state": "California",
+      "city": "Los Angeles",
+      "coordinates": {
+        "latitude": 34.0522,
+        "longitude": -118.2437
+      }
     },
-    {
-        "observation": "Jupiter and its moons",
-        "object_type": "Planet",
-        "date": "2024-10-16",
-        "time": "22:15",
-        "time_zone": "GMT-5",
-        "location": {
-            "country": "USA",
-            "state": "New York",
-            "city": "New York City",
-            "coordinates": {
-                "latitude": 40.7128,
-                "longitude": -74.0060
-            }
-        },
-        "telescope": {
-            "make": "Meade",
-            "serial_number": "SN987654"
-        },
-        "weather_conditions": "Partly cloudy",
-        "visibility_conditions": "Good",
-        "duration": "1 hour",
-        "notes": "Could see four of Jupiter's moons clearly."
+    "telescope": {
+      "make": "Celestron",
+      "serial_number": "SN123456"
     },
-    {
-        "observation": "The Andromeda Galaxy",
-        "object_type": "Galaxy",
-        "date": "2024-10-17",
-        "time": "20:45",
-        "time_zone": "GMT-5",
-        "location": {
-            "country": "USA",
-            "state": "Texas",
-            "city": "Austin",
-            "coordinates": {
-                "latitude": 30.2672,
-                "longitude": -97.7431
-            }
-        },
-        "telescope": {
-            "make": "Orion",
-            "serial_number": "SN321098"
-        },
-        "weather_conditions": "Clear skies, mild temperature",
-        "visibility_conditions": "Very good",
-        "duration": "1.5 hours",
-        "notes": "Saw the Andromeda Galaxy with a good amount of detail."
-    },
-    {
-        "observation": "Lunar Eclipse",
-        "object_type": "Moon",
-        "date": "2024-10-08",
-        "time": "23:00",
-        "time_zone": "GMT-5",
-        "location": {
-            "country": "USA",
-            "state": "Florida",
-            "city": "Miami",
-            "coordinates": {
-                "latitude": 25.7617,
-                "longitude": -80.1918
-            }
-        },
-        "telescope": {
-            "make": "Sky-Watcher",
-            "serial_number": "SN456123"
-        },
-        "weather_conditions": "Clear with slight haze",
-        "visibility_conditions": "Good",
-        "duration": "3 hours",
-        "notes": "Observed the full lunar eclipse."
-    },
-    {
-        "observation": "Saturn and its rings",
-        "object_type": "Planet",
-        "date": "2024-10-09",
-        "time": "20:00",
-        "time_zone": "GMT-5",
-        "location": {
-            "country": "USA",
-            "state": "Illinois",
-            "city": "Chicago",
-            "coordinates": {
-                "latitude": 41.8781,
-                "longitude": -87.6298
-            }
-        },
-        "telescope": {
-            "make": "Celestron",
-            "serial_number": "SN789456"
-        },
-        "weather_conditions": "Partly cloudy",
-        "visibility_conditions": "Fair",
-        "duration": "1 hour",
-        "notes": "Rings were visible; great experience!"
-    },
-    {
-        "observation": "The Milky Way",
-        "object_type": "Galaxy",
-        "date": "2024-10-12",
-        "time": "23:30",
-        "time_zone": "GMT-5",
-        "location": {
-            "country": "USA",
-            "state": "Washington",
-            "city": "Seattle",
-            "coordinates": {
-                "latitude": 47.6062,
-                "longitude": -122.3321
-            }
-        },
-        "telescope": {
-            "make": "Nikon",
-            "serial_number": "SN654321"
-        },
-        "weather_conditions": "Clear and dark skies",
-        "visibility_conditions": "Excellent",
-        "duration": "2 hours",
-        "notes": "Beautiful view of the Milky Way; took many photos."
-    },
-    {
-        "observation": "Comet Neowise",
-        "object_type": "Comet",
-        "date": "2024-10-14",
-        "time": "22:30",
-        "time_zone": "GMT-5",
-        "location": {
-            "country": "USA",
-            "state": "Arizona",
-            "city": "Phoenix",
-            "coordinates": {
-                "latitude": 33.4484,
-                "longitude": -112.0740
-            }
-        },
-        "telescope": {
-            "make": "Celestron",
-            "serial_number": "SN123456"
-        },
-        "weather_conditions": "Clear with no light pollution",
-        "visibility_conditions": "Excellent",
-        "duration": "1.5 hours",
-        "notes": "Comet was very bright and easy to see."
+    "weather_conditions": "Clear skies, no clouds",
+    "visibility_conditions": "Excellent",
+    "duration": "2 hours",
+    "notes": "Observed the Orion Nebula with great detail.",
+    "username": {
+      "type": "String",
+      "required": true,
+      "unique": true,
+      "trim": true,
+      "minlength": 5,
+      "value": "astro_user1"
     }
+  },
+  {
+    "observation": "Jupiter and its moons",
+    "object_type": "Planet",
+    "date": "2024-10-16",
+    "time": "22:15",
+    "time_zone": "GMT-5",
+    "location": {
+      "country": "USA",
+      "state": "New York",
+      "city": "New York City",
+      "coordinates": {
+        "latitude": 40.7128,
+        "longitude": -74.006
+      }
+    },
+    "telescope": {
+      "make": "Meade",
+      "serial_number": "SN987654"
+    },
+    "weather_conditions": "Partly cloudy",
+    "visibility_conditions": "Good",
+    "duration": "1 hour",
+    "notes": "Could see four of Jupiter's moons clearly.",
+    "username": {
+      "type": "String",
+      "required": true,
+      "unique": true,
+      "trim": true,
+      "minlength": 5,
+      "value": "astro_user2"
+    }
+  },
+  {
+    "observation": "The Andromeda Galaxy",
+    "object_type": "Galaxy",
+    "date": "2024-10-17",
+    "time": "20:45",
+    "time_zone": "GMT-5",
+    "location": {
+      "country": "USA",
+      "state": "Texas",
+      "city": "Austin",
+      "coordinates": {
+        "latitude": 30.2672,
+        "longitude": -97.7431
+      }
+    },
+    "telescope": {
+      "make": "Orion",
+      "serial_number": "SN321098"
+    },
+    "weather_conditions": "Clear skies, mild temperature",
+    "visibility_conditions": "Very good",
+    "duration": "1.5 hours",
+    "notes": "Saw the Andromeda Galaxy with a good amount of detail.",
+    "username": {
+      "type": "String",
+      "required": true,
+      "unique": true,
+      "trim": true,
+      "minlength": 5,
+      "value": "astro_user3"
+    }
+  },
+  {
+    "observation": "Lunar Eclipse",
+    "object_type": "Moon",
+    "date": "2024-10-08",
+    "time": "23:00",
+    "time_zone": "GMT-5",
+    "location": {
+      "country": "USA",
+      "state": "Florida",
+      "city": "Miami",
+      "coordinates": {
+        "latitude": 25.7617,
+        "longitude": -80.1918
+      }
+    },
+    "telescope": {
+      "make": "Sky-Watcher",
+      "serial_number": "SN456123"
+    },
+    "weather_conditions": "Clear with slight haze",
+    "visibility_conditions": "Good",
+    "duration": "3 hours",
+    "notes": "Observed the full lunar eclipse.",
+    "username": {
+      "type": "String",
+      "required": true,
+      "unique": true,
+      "trim": true,
+      "minlength": 5,
+      "value": "astro_user4"
+    }
+  },
+  {
+    "observation": "Saturn and its rings",
+    "object_type": "Planet",
+    "date": "2024-10-09",
+    "time": "20:00",
+    "time_zone": "GMT-5",
+    "location": {
+      "country": "USA",
+      "state": "Illinois",
+      "city": "Chicago",
+      "coordinates": {
+        "latitude": 41.8781,
+        "longitude": -87.6298
+      }
+    },
+    "telescope": {
+      "make": "Celestron",
+      "serial_number": "SN789456"
+    },
+    "weather_conditions": "Partly cloudy",
+    "visibility_conditions": "Fair",
+    "duration": "1 hour",
+    "notes": "Rings were visible; great experience!",
+    "username": {
+      "type": "String",
+      "required": true,
+      "unique": true,
+      "trim": true,
+      "minlength": 5,
+      "value": "astro_user5"
+    }
+  },
+  {
+    "observation": "The Milky Way",
+    "object_type": "Galaxy",
+    "date": "2024-10-12",
+    "time": "23:30",
+    "time_zone": "GMT-5",
+    "location": {
+      "country": "USA",
+      "state": "Washington",
+      "city": "Seattle",
+      "coordinates": {
+        "latitude": 47.6062,
+        "longitude": -122.3321
+      }
+    },
+    "telescope": {
+      "make": "Nikon",
+      "serial_number": "SN654321"
+    },
+    "weather_conditions": "Clear and dark skies",
+    "visibility_conditions": "Excellent",
+    "duration": "2 hours",
+    "notes": "Beautiful view of the Milky Way; took many photos.",
+    "username": {
+      "type": "String",
+      "required": true,
+      "unique": true,
+      "trim": true,
+      "minlength": 5,
+      "value": "astro_user6"
+    }
+  },
+  {
+    "observation": "Comet Neowise",
+    "object_type": "Comet",
+    "date": "2024-10-14",
+    "time": "22:30",
+    "time_zone": "GMT-5",
+    "location": {
+      "country": "USA",
+      "state": "Arizona",
+      "city": "Phoenix",
+      "coordinates": {
+        "latitude": 33.4484,
+        "longitude": -112.074
+      }
+    },
+    "telescope": {
+      "make": "Celestron",
+      "serial_number": "SN123456"
+    },
+    "weather_conditions": "Clear with no light pollution",
+    "visibility_conditions": "Excellent",
+    "duration": "1.5 hours",
+    "notes": "Comet was very bright and easy to see.",
+    "username": {
+      "type": "String",
+      "required": true,
+      "unique": true,
+      "trim": true,
+      "minlength": 5,
+      "value": "astro_user7"
+    }
+  }
 ]

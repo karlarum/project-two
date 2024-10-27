@@ -71,7 +71,7 @@
         }
       }
     },
-    "/user/{id}": {
+    "/user/{username}": {
       "get": {
         "description": "",
         "produces": [
@@ -79,7 +79,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "username",
             "in": "path",
             "required": true,
             "type": "string"
@@ -104,7 +104,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "username",
             "in": "path",
             "required": true,
             "type": "string"
@@ -132,8 +132,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -150,7 +150,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "username",
             "in": "path",
             "required": true,
             "type": "string"
@@ -225,6 +225,9 @@
                 },
                 "notes": {
                   "example": "any"
+                },
+                "username": {
+                  "example": "any"
                 }
               }
             }
@@ -240,7 +243,7 @@
         }
       }
     },
-    "/observation/{id}": {
+    "/observation/{username}": {
       "get": {
         "description": "",
         "produces": [
@@ -248,7 +251,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "username",
             "in": "path",
             "required": true,
             "type": "string"
@@ -273,7 +276,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "username",
             "in": "path",
             "required": true,
             "type": "string"
@@ -319,8 +322,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -337,7 +340,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "username",
             "in": "path",
             "required": true,
             "type": "string"

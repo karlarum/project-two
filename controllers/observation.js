@@ -1,10 +1,8 @@
-const mongodb = require('../db/connect');
-const ObjectId = require('mongodb').ObjectId;
+const Observation = require('../models/observation');
 
 const getObservations = async (req, res) => {
     try {
-        const db = mongodb.getDb().db();
-        const observations = await db.collection('observation').find().toArray();
+        const observations = await Observation.find();
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(observations);
     } catch (err) {
@@ -12,18 +10,18 @@ const getObservations = async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 };
-const getSingleObservation = async (req, res) => {
-    const id = req.params.id;
 
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send('Invalid ID format');
+const getSingleObservation = async (req, res) => {
+    const username = req.params.username;
+
+    if (!username) {
+        return res.status(400).json({ error: 'Username is required' });
     }
 
     try {
-        const db = mongodb.getDb().db();
-        const observation = await db.collection('observation').findOne({ _id: new ObjectId(id) });
+        const observation = await Observation.findOne({ username });
         if (!observation) {
-            return res.status(404).send('Observation not found');
+            return res.status(404).json('Observation not found');
         }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(observation);
@@ -34,7 +32,7 @@ const getSingleObservation = async (req, res) => {
 };
 
 const createObservation = async (req, res) => {
-    const newObservation = {
+    const newObservation = new Observation({
         observation: req.body.observation,
         object_type: req.body.object_type,
         date: req.body.date,
@@ -55,13 +53,12 @@ const createObservation = async (req, res) => {
         weather_conditions: req.body.weather_conditions,
         visibility_conditions: req.body.visibility_conditions,
         duration: req.body.duration,
-        notes: req.body.notes
-    };
+        notes: req.body.notes,
+        username: req.body.username
+    });
     try {
-        const db = mongodb.getDb().db();
-        const result = await db.collection('observation').insertOne(newObservation);
-        const createdObservation = await db.collection('observation').findOne({ _id: result.insertedId });
-        res.status(201).json(createdObservation);
+        await newObservation.save();
+        res.status(201).json(newObservation);
     } catch (err) {
         console.error('Error creating observation:', err);
         res.status(500).send('Internal Server Error');
@@ -69,43 +66,47 @@ const createObservation = async (req, res) => {
 };
 
 const updateObservation = async (req, res) => {
-    const id = req.params.id;
-    const updatedObservation = {
-        observation: req.body.observation,
-        object_type: req.body.object_type,
-        date: req.body.date,
-        time: req.body.time,
-        location: {
-            country: req.body.location.country,
-            state: req.body.location.state,
-            city: req.body.location.city,
-            coordinates: {
-                latitude: req.body.location.coordinates.latitude,
-                longitude: req.body.location.coordinates.longitude
-            }
-        },
-        telescope: {
-            make: req.body.telescope.make,
-            serial_number: req.body.telescope.serial_number
-        },
-        weather_conditions: req.body.weather_conditions,
-        visibility_conditions: req.body.visibility_conditions,
-        duration: req.body.duration,
-        notes: req.body.notes
-    };
+    const username = req.params.username;
 
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send('Invalid ID format');
+    if (!username) {
+        return res.status(400).json('Invalid Username Supplied');
     }
 
     try {
-        const db = mongodb.getDb().db();
-        const result = await db.collection('observation').replaceOne({ _id: new ObjectId(id) }, updatedObservation);
+        const updatedObservation = await Observation.findOneAndUpdate(
+            { username },
+            {
+                $set: {
+                    observation: req.body.observation,
+                    object_type: req.body.object_type,
+                    date: req.body.date,
+                    time: req.body.time,
+                    location: {
+                        country: req.body.location.country,
+                        state: req.body.location.state,
+                        city: req.body.location.city,
+                        coordinates: {
+                            latitude: req.body.location.coordinates.latitude,
+                            longitude: req.body.location.coordinates.longitude
+                        }
+                    },
+                    telescope: {
+                        make: req.body.telescope.make,
+                        serial_number: req.body.telescope.serial_number
+                    },
+                    weather_conditions: req.body.weather_conditions,
+                    visibility_conditions: req.body.visibility_conditions,
+                    duration: req.body.duration,
+                    notes: req.body.notes
+                }
+            },
+            { new: true, runValidators: true }
+        );
 
-        if (result.matchedCount === 0) {
-            return res.status(404).send('Observation not found');
+        if (!updatedObservation) {
+            return res.status(404).json('Observation not found');
         }
-        res.status(204).send();
+        res.status(200).json(updatedObservation);
     } catch (err) {
         console.error('Error updating observation:', err);
         res.status(500).send('Internal Server Error');
@@ -113,18 +114,17 @@ const updateObservation = async (req, res) => {
 };
 
 const deleteObservation = async (req, res) => {
-    const id = req.params.id;
+    const username = req.params.username;
 
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send('Invalid ID format');
+    if (!username) {
+        return res.status(400).json('Username is required');
     }
 
     try {
-        const db = mongodb.getDb().db();
-        const result = await db.collection('observation').deleteOne({ _id: new ObjectId(id) });
+        const result = await Observation.deleteOne({ username });
 
         if (result.deletedCount === 0) {
-            return res.status(404).send('Observation not found');
+            return res.status(404).json('Observation not found');
         }
         res.status(204).send();
     } catch (err) {

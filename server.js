@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { initDb } = require('./db/connect');
-const userRouter = require('./routes/user');
-const observationRouter = require('./routes/observation')
+const mongoose = require('mongoose');
+const dbConfig = require('./db/connect');
+const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -10,26 +10,25 @@ const app = express();
 const port = 3000;
 
 app
-    .use(bodyParser.json())
-    .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-    .use((req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
-    })
-    .use('/', require('./routes'));
+  .use(bodyParser.json())
+  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+  .use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
-initDb((err) => {
-    if (err) {
-        console.error('Failed to connect to the database:', err);
-        process.exit(1);
-    }
+app.use('/', routes);
 
-    console.log('MongoDB connected successfully.');
-
-    app.use('/user', userRouter);
-    app.use('/observation', observationRouter);
+mongoose
+  .connect(dbConfig.url)
+  .then(() => {
+    console.log('Successfully connected to MongoDB.');
 
     app.listen(process.env.PORT || port, () => {
-        console.log('Web Server is listening at port ' + (process.env.PORT || port));
+      console.log('Web Server is listening at port ' + (process.env.PORT || port));
     });
-});
+  })
+  .catch(err => {
+    console.error('Connection error', err);
+    process.exit(1);
+  });

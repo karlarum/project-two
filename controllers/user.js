@@ -1,10 +1,8 @@
-const mongodb = require('../db/connect');
-const ObjectId = require('mongodb').ObjectId;
+const User = require('../models/user');
 
 const getUsers = async (req, res) => {
     try {
-        const db = mongodb.getDb().db();
-        const users = await db.collection('user').find().toArray();
+        const users = await User.find();
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(users);
     } catch (err) {
@@ -12,29 +10,29 @@ const getUsers = async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 };
-const getSingle = async (req, res) => {
-    const id = req.params.id;
 
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send('Invalid ID format');
+const getSingle = async (req, res) => {
+    const username = req.params.username;
+
+    if (!username) {
+        return res.status(400).json('Username is required');
     }
 
     try {
-        const db = mongodb.getDb().db();
-        const user = await db.collection('user').findOne({ _id: new ObjectId(id) });
+        const user = await User.findOne({ username });
         if (!user) {
-            return res.status(404).send('User not found');
+            return res.status(404).json('User not found');
         }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(user);
     } catch (err) {
-        console.error('Error fetching contact:', err);
+        console.error('Error fetching user:', err);
         res.status(500).send('Internal Server Error');
     }
 };
 
 const createUser = async (req, res) => {
-    const newUser = {
+    const newUser = new User({
         username: req.body.username,
         contact_information: {
             email: req.body.contact_information.email,
@@ -50,12 +48,11 @@ const createUser = async (req, res) => {
         observation_log: {
             observations: req.body.observation_log.observations || []
         }
-    };
+    });
+
     try {
-        const db = mongodb.getDb().db();
-        const result = await db.collection('user').insertOne(newUser);
-        const createdUser = await db.collection('user').findOne({ _id: result.insertedId });
-        res.status(201).json(createdUser);
+        await newUser.save();
+        res.status(201).json(newUser);
     } catch (err) {
         console.error('Error creating user:', err);
         res.status(500).send('Internal Server Error');
@@ -63,37 +60,42 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-    const id = req.params.id;
-    const updatedUser = {
-        username: req.body.username,
-        contact_information: {
-            email: req.body.contact_information.email,
-            phone_number: req.body.contact_information.phone_number,
-            preferred_contact: req.body.contact_information.preferred_contact
-        },
-        equipment: {
-            equipment_type: req.body.equipment.equipment_type,
-            make: req.body.equipment.make,
-            model: req.body.equipment.model,
-            serial_number: req.body.equipment.serial_number
-        },
-        observation_log: {
-            observations: req.body.observation_log.observations || []
-        }
-    };
+    const username = req.params.username;
 
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send('Invalid ID format');
+    if (!username) {
+        return res.status(400).json('Invalid Username Supplied');
     }
 
     try {
-        const db = mongodb.getDb().db();
-        const result = await db.collection('user').replaceOne({ _id: new ObjectId(id) }, updatedUser);
+        const updatedUser = await User.findOneAndUpdate(
+            { username },
+            {
+                $set: {
+                    username: req.body.username,
+                    contact_information: {
+                        email: req.body.contact_information.email,
+                        phone_number: req.body.contact_information.phone_number,
+                        preferred_contact: req.body.contact_information.preferred_contact
+                    },
+                    equipment: {
+                        equipment_type: req.body.equipment.equipment_type,
+                        make: req.body.equipment.make,
+                        model: req.body.equipment.model,
+                        serial_number: req.body.equipment.serial_number
+                    },
+                    observation_log: {
+                        observations: req.body.observation_log.observations || []
+                    }
+                }
+            },
+            { new: true, runValidators: true }
+        );
 
-        if (result.matchedCount === 0) {
-            return res.status(404).send('User not found');
+        if (!updatedUser) {
+            return res.status(404).json('User not found');
         }
-        res.status(204).send();
+
+        res.status(200).json(updatedUser);
     } catch (err) {
         console.error('Error updating user:', err);
         res.status(500).send('Internal Server Error');
@@ -101,18 +103,17 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-    const id = req.params.id;
+    const username = req.params.username;
 
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).send('Invalid ID format');
+    if (!username) {
+        return res.status(400).json('Username is required');
     }
 
     try {
-        const db = mongodb.getDb().db();
-        const result = await db.collection('user').deleteOne({ _id: new ObjectId(id) });
+        const result = await User.deleteOne({ username });
 
         if (result.deletedCount === 0) {
-            return res.status(404).send('User not found');
+            return res.status(404).json('User not found');
         }
         res.status(204).send();
     } catch (err) {
