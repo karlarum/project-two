@@ -5,7 +5,7 @@ const doc = {
     title: 'Astronomy Observation API',
     description: 'API for managing users and astronomy observations'
   },
-  host: '//project-two-hu6p.onrender.com',
+  host: 'project-two-hu6p.onrender.com',
   schemes: ['https']
 };
 
