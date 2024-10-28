@@ -9,15 +9,11 @@ user
         email                   | String
         phone_number            | String
         preferred_contact       | String
-    equipment                   | EquipmentItem
-        equipment_type          | String
-        make                    | String
-        model                   | String
-        serial_number           | String
     observation_log             | ObservationItem
         observations            | [ObservationItem] (An array of observations)
 
 observation
+    username                    | String
     object                      | String
     object_type                 | String
     date                        | Date
@@ -30,11 +26,12 @@ observation
         coordinates             | CoordinateItem
             latitude            | Number
             longitude           | Number
-    telescope                   | TelescopeItem
+    equipment                   | EquipmentItem
+        equipment_type          | String
         make                    | String
+        model                   | String
         serial_number           | String
     weather conditions          | String
     visibility conditions       | String
     duration                    | String
     notes                       | String
-    user_id                     | Number

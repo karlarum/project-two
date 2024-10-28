@@ -1,5 +1,9 @@
 module.exports = (mongoose) => {
     const observationSchema = mongoose.Schema({
+        username: {
+            type: String,
+            required: true
+        },
         observation: {
             type: String,
             required: true
@@ -29,6 +33,7 @@ module.exports = (mongoose) => {
             },
             city: {
                 type: String,
+                required: true
             },
             coordinates: {
                 latitude: {
@@ -39,13 +44,19 @@ module.exports = (mongoose) => {
                 },
             },
         },
-        telescope: {
+        equipment: {
+            equipment_type: {
+                type: String
+            },
             make: {
+                type: String
+            },
+            model: {
                 type: String
             },
             serial_number: {
                 type: String
-            },
+            }
         },
         weather_conditions: {
             type: String,

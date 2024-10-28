@@ -39,12 +39,6 @@ const createUser = async (req, res) => {
             phone_number: req.body.contact_information.phone_number,
             preferred_contact: req.body.contact_information.preferred_contact
         },
-        equipment: {
-            equipment_type: req.body.equipment.equipment_type,
-            make: req.body.equipment.make,
-            model: req.body.equipment.model,
-            serial_number: req.body.equipment.serial_number
-        },
         observation_log: {
             observations: req.body.observation_log.observations || []
         }
@@ -76,12 +70,6 @@ const updateUser = async (req, res) => {
                         email: req.body.contact_information.email,
                         phone_number: req.body.contact_information.phone_number,
                         preferred_contact: req.body.contact_information.preferred_contact
-                    },
-                    equipment: {
-                        equipment_type: req.body.equipment.equipment_type,
-                        make: req.body.equipment.make,
-                        model: req.body.equipment.model,
-                        serial_number: req.body.equipment.serial_number
                     },
                     observation_log: {
                         observations: req.body.observation_log.observations || []

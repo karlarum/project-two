@@ -3,14 +3,8 @@
     "username": "stargazer99",
     "contact_information": {
       "email": "stargazer99@example.com",
-      "phone_number": "+1-232-962-4895",
+      "phone_number": "2329624895",
       "preferred_contact": "email"
-    },
-    "equipment": {
-      "equipment_type": "Telescope",
-      "make": "Celestron",
-      "model": "Astromaster 70",
-      "serial_number": "SN123456"
     },
     "observation_log": {
       "observations": []
@@ -20,14 +14,8 @@
     "username": "astro_enthusiast",
     "contact_information": {
       "email": "astro_enthusiast@example.com",
-      "phone_number": "+1-789-456-1230",
+      "phone_number": "7894561230",
       "preferred_contact": "phone"
-    },
-    "equipment": {
-      "equipment_type": "Binoculars",
-      "make": "Nikon",
-      "model": "Aculon A211",
-      "serial_number": "SN654321"
     },
     "observation_log": {
       "observations": []
@@ -37,14 +25,8 @@
     "username": "moonlight_fan",
     "contact_information": {
       "email": "moonlight_fan@example.com",
-      "phone_number": "+1-456-123-0789",
+      "phone_number": "4561230789",
       "preferred_contact": "email"
-    },
-    "equipment": {
-      "equipment_type": "Telescope",
-      "make": "Meade",
-      "model": "LX200",
-      "serial_number": "SN987654"
     },
     "observation_log": {
       "observations": []
@@ -54,14 +36,8 @@
     "username": "cosmic_dreamer",
     "contact_information": {
       "email": "cosmic_dreamer@example.com",
-      "phone_number": "+1-369-258-0147",
+      "phone_number": "3692580147",
       "preferred_contact": "phone"
-    },
-    "equipment": {
-      "equipment_type": "Telescope",
-      "make": "Orion",
-      "model": "StarBlast 4.5",
-      "serial_number": "SN321098"
     },
     "observation_log": {
       "observations": []
@@ -71,14 +47,8 @@
     "username": "star_chaser",
     "contact_information": {
       "email": "star_chaser@example.com",
-      "phone_number": "+1-753-910-8954",
+      "phone_number": "7539108954",
       "preferred_contact": "email"
-    },
-    "equipment": {
-      "equipment_type": "Binoculars",
-      "make": "Canon",
-      "model": "10x42 L",
-      "serial_number": "SN123789"
     },
     "observation_log": {
       "observations": []
@@ -88,14 +58,8 @@
     "username": "galaxy_explorer",
     "contact_information": {
       "email": "galaxy_explorer@example.com",
-      "phone_number": "+1-456-147-2588",
+      "phone_number": "4561472588",
       "preferred_contact": "phone"
-    },
-    "equipment": {
-      "equipment_type": "Telescope",
-      "make": "Sky-Watcher",
-      "model": "SkyMax 127",
-      "serial_number": "SN456123"
     },
     "observation_log": {
       "observations": []
@@ -105,14 +69,8 @@
     "username": "nebula_novice",
     "contact_information": {
       "email": "nebula_novice@example.com",
-      "phone_number": "+1-265-031-7489",
+      "phone_number": "2650317489",
       "preferred_contact": "email"
-    },
-    "equipment": {
-      "equipment_type": "Telescope",
-      "make": "Celestron",
-      "model": "NexStar 5SE",
-      "serial_number": "SN789456"
     },
     "observation_log": {
       "observations": []

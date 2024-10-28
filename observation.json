@@ -1,5 +1,6 @@
 [
   {
+    "username": "astro_user1",
     "observation": "M42 - Orion Nebula",
     "object_type": "Nebula",
     "date": "2024-10-15",
@@ -14,24 +15,19 @@
         "longitude": -118.2437
       }
     },
-    "telescope": {
+    "equipment": {
+      "equipment_type": "Telescope",
       "make": "Celestron",
+      "model": "NexStar 8SE",
       "serial_number": "SN123456"
     },
     "weather_conditions": "Clear skies, no clouds",
     "visibility_conditions": "Excellent",
     "duration": "2 hours",
-    "notes": "Observed the Orion Nebula with great detail.",
-    "username": {
-      "type": "String",
-      "required": true,
-      "unique": true,
-      "trim": true,
-      "minlength": 5,
-      "value": "astro_user1"
-    }
+    "notes": "Observed the Orion Nebula with great detail."
   },
   {
+    "username": "astro_user2",
     "observation": "Jupiter and its moons",
     "object_type": "Planet",
     "date": "2024-10-16",
@@ -46,24 +42,19 @@
         "longitude": -74.006
       }
     },
-    "telescope": {
+    "equipment": {
+      "equipment_type": "Telescope",
       "make": "Meade",
+      "model": "LX90",
       "serial_number": "SN987654"
     },
     "weather_conditions": "Partly cloudy",
     "visibility_conditions": "Good",
     "duration": "1 hour",
-    "notes": "Could see four of Jupiter's moons clearly.",
-    "username": {
-      "type": "String",
-      "required": true,
-      "unique": true,
-      "trim": true,
-      "minlength": 5,
-      "value": "astro_user2"
-    }
+    "notes": "Could see four of Jupiter's moons clearly."
   },
   {
+    "username": "astro_user3",
     "observation": "The Andromeda Galaxy",
     "object_type": "Galaxy",
     "date": "2024-10-17",
@@ -78,24 +69,19 @@
         "longitude": -97.7431
       }
     },
-    "telescope": {
+    "equipment": {
+      "equipment_type": "Telescope",
       "make": "Orion",
+      "model": "SkyQuest XT10",
       "serial_number": "SN321098"
     },
     "weather_conditions": "Clear skies, mild temperature",
     "visibility_conditions": "Very good",
     "duration": "1.5 hours",
-    "notes": "Saw the Andromeda Galaxy with a good amount of detail.",
-    "username": {
-      "type": "String",
-      "required": true,
-      "unique": true,
-      "trim": true,
-      "minlength": 5,
-      "value": "astro_user3"
-    }
+    "notes": "Saw the Andromeda Galaxy with a good amount of detail."
   },
   {
+    "username": "astro_user4",
     "observation": "Lunar Eclipse",
     "object_type": "Moon",
     "date": "2024-10-08",
@@ -110,24 +96,19 @@
         "longitude": -80.1918
       }
     },
-    "telescope": {
+    "equipment": {
+      "equipment_type": "Telescope",
       "make": "Sky-Watcher",
+      "model": "EclipseView 114",
       "serial_number": "SN456123"
     },
     "weather_conditions": "Clear with slight haze",
     "visibility_conditions": "Good",
     "duration": "3 hours",
-    "notes": "Observed the full lunar eclipse.",
-    "username": {
-      "type": "String",
-      "required": true,
-      "unique": true,
-      "trim": true,
-      "minlength": 5,
-      "value": "astro_user4"
-    }
+    "notes": "Observed the full lunar eclipse."
   },
   {
+    "username": "astro_user5",
     "observation": "Saturn and its rings",
     "object_type": "Planet",
     "date": "2024-10-09",
@@ -142,24 +123,19 @@
         "longitude": -87.6298
       }
     },
-    "telescope": {
+    "equipment": {
+      "equipment_type": "Telescope",
       "make": "Celestron",
+      "model": "NexStar 127SLT",
       "serial_number": "SN789456"
     },
     "weather_conditions": "Partly cloudy",
     "visibility_conditions": "Fair",
     "duration": "1 hour",
-    "notes": "Rings were visible; great experience!",
-    "username": {
-      "type": "String",
-      "required": true,
-      "unique": true,
-      "trim": true,
-      "minlength": 5,
-      "value": "astro_user5"
-    }
+    "notes": "Rings were visible; great experience!"
   },
   {
+    "username": "astro_user6",
     "observation": "The Milky Way",
     "object_type": "Galaxy",
     "date": "2024-10-12",
@@ -174,24 +150,19 @@
         "longitude": -122.3321
       }
     },
-    "telescope": {
+    "equipment": {
+      "equipment_type": "Camera",
       "make": "Nikon",
+      "model": "D7500",
       "serial_number": "SN654321"
     },
     "weather_conditions": "Clear and dark skies",
     "visibility_conditions": "Excellent",
     "duration": "2 hours",
-    "notes": "Beautiful view of the Milky Way; took many photos.",
-    "username": {
-      "type": "String",
-      "required": true,
-      "unique": true,
-      "trim": true,
-      "minlength": 5,
-      "value": "astro_user6"
-    }
+    "notes": "Beautiful view of the Milky Way; took many photos."
   },
   {
+    "username": "astro_user7",
     "observation": "Comet Neowise",
     "object_type": "Comet",
     "date": "2024-10-14",
@@ -206,21 +177,15 @@
         "longitude": -112.074
       }
     },
-    "telescope": {
+    "equipment": {
+      "equipment_type": "Telescope",
       "make": "Celestron",
+      "model": "PowerSeeker 70EQ",
       "serial_number": "SN123456"
     },
     "weather_conditions": "Clear with no light pollution",
     "visibility_conditions": "Excellent",
     "duration": "1.5 hours",
-    "notes": "Comet was very bright and easy to see.",
-    "username": {
-      "type": "String",
-      "required": true,
-      "unique": true,
-      "trim": true,
-      "minlength": 5,
-      "value": "astro_user7"
-    }
+    "notes": "Comet was very bright and easy to see."
   }
 ]

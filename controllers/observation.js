@@ -33,6 +33,7 @@ const getSingleObservation = async (req, res) => {
 
 const createObservation = async (req, res) => {
     const newObservation = new Observation({
+        username: req.body.username,
         observation: req.body.observation,
         object_type: req.body.object_type,
         date: req.body.date,
@@ -46,15 +47,16 @@ const createObservation = async (req, res) => {
                 longitude: req.body.location.coordinates.longitude
             }
         },
-        telescope: {
-            make: req.body.telescope.make,
-            serial_number: req.body.telescope.serial_number
+        equipment: {
+            equipment_type: req.body.equipment.equipment_type,
+            make: req.body.equipment.make,
+            model: req.body.equipment.make,
+            serial_number: req.body.equipment.serial_number
         },
         weather_conditions: req.body.weather_conditions,
         visibility_conditions: req.body.visibility_conditions,
         duration: req.body.duration,
         notes: req.body.notes,
-        username: req.body.username
     });
     try {
         await newObservation.save();
@@ -90,9 +92,11 @@ const updateObservation = async (req, res) => {
                             longitude: req.body.location.coordinates.longitude
                         }
                     },
-                    telescope: {
-                        make: req.body.telescope.make,
-                        serial_number: req.body.telescope.serial_number
+                    equipment: {
+                        equipment_type: req.body.equipment.equipment_type,
+                        make: req.body.equipment.make,
+                        model: req.body.equipment.make,
+                        serial_number: req.body.equipment.serial_number
                     },
                     weather_conditions: req.body.weather_conditions,
                     visibility_conditions: req.body.visibility_conditions,

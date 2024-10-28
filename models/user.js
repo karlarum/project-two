@@ -14,25 +14,13 @@ module.exports = (mongoose) => {
       },
       phone_number: {
         type: String,
+        required: true,
         match: /^[0-9]{10,15}$/
       },
       preferred_contact: {
         type: String,
+        required: true,
         enum: ['email', 'phone']
-      }
-    },
-    equipment: {
-      equipment_type: {
-        type: String
-      },
-      make: {
-        type: String
-      },
-      model: {
-        type: String
-      },
-      serial_number: {
-        type: String
       }
     },
     observation_log: {
