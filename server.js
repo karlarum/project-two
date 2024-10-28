@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const dbConfig = require('./db/connect');
+const connectDB = require('./db/connect');
 const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
@@ -19,11 +18,8 @@ app
 
 app.use('/', routes);
 
-mongoose
-  .connect(dbConfig.url)
+connectDB()
   .then(() => {
-    console.log('Successfully connected to MongoDB.');
-
     app.listen(process.env.PORT || port, () => {
       console.log('Web Server is listening at port ' + (process.env.PORT || port));
     });

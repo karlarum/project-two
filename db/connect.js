@@ -5,10 +5,11 @@
 //   url: process.env.MONGODB_URI,
 // };
 
-// ORIGINAL CODE
+// TRY CODE
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const connectDB = async () => {
@@ -24,7 +25,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = {
-  connectDB,
-  mongoose,
-};
+module.exports = connectDB;
