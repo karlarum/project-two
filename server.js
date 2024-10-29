@@ -1,30 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const connectDB = require('./db/connect');
-const routes = require('./routes');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
 
+const port = process.env.PORT || 3000;
 const app = express();
-const port = 3000;
 
 app
   .use(bodyParser.json())
-  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
-  });
+  })
+  .use('/', require('./routes'));
 
-app.use('/', routes);
-
-connectDB()
+const db = require('./models');
+db.mongoose
+  .connect(db.url)
   .then(() => {
-    app.listen(process.env.PORT || port, () => {
-      console.log('Web Server is listening at port ' + (process.env.PORT || port));
+    app.listen(port, () => {
+      console.log(`DB Connected and server running on ${port}.`);
     });
   })
-  .catch(err => {
-    console.error('Connection error', err);
-    process.exit(1);
+  .catch((err) => {
+    console.log('Cannot connect to the database!', err);
+    process.exit();
   });

@@ -2,8 +2,8 @@
 
 ### Get all users
 GET http://localhost:3000/user
-### Get user by ID (astro_enthusiast)
-GET http://localhost:3000/user/671349a2980e3ea245f1d934
+### Get user by username (astro_enthusiast)
+GET http://localhost:3000/user/astro_enthusiast
 ### Create user (celestial_wanderer)
 POST http://localhost:3000/user HTTP/1.1
 Content-Type: application/json
@@ -12,104 +12,98 @@ Content-Type: application/json
         "username": "celestial_wanderer",
         "contact_information": {
             "email": "wanderer@example.com",
-            "phone_number": "+1-345-876-1234",
+            "phone_number": "4567899512",
             "preferred_contact": "phone"
-        },
-        "equipment": {
-            "equipment_type": "Telescope",
-            "make": "Orion",
-            "model": "SkyQuest XT8",
-            "serial_number": "SN987654"
         },
         "observation_log": {
             "observations": []
         }
     }
-### Update user email (cosmic_dreamer)
-PUT http://localhost:3000/user/671349a2980e3ea245f1d936 HTTP/1.1
+### Update user email by username (celestial_wanderer)
+PUT http://localhost:3000/user/celestial_wanderer HTTP/1.1
 Content-Type: application/json
 
     {
-        "username": "cosmic_dreamer",
+        "username": "celestial_wanderer",
         "contact_information": {
-            "email": "cosmic5@gmail.com",
-            "phone_number": "+1-369-258-0147",
+            "email": "nightsky@example.com",
+            "phone_number": "4567899512",
             "preferred_contact": "phone"
-        },
-        "equipment": {
-            "equipment_type": "Telescope",
-            "make": "Orion",
-            "model": "StarBlast 4.5",
-            "serial_number": "SN321098"
         },
         "observation_log": {
             "observations": []
         }
     }
-### Delete user (celestial_wanderer)
-DELETE http://localhost:3000/user/6713e1a387cbe705726a5496 HTTP/1.1
-### Get all observations
+### Delete user by username (celestial_wanderer)
+DELETE http://localhost:3000/user/celestial_wanderer HTTP/1.1
+### Get ALL observations
 GET http://localhost:3000/observation
-### Get ovservation by ID (Jupiter and its moons)
-GET http://localhost:3000/observation/671349ed980e3ea245f1d93b
-### Create observation (double cluster)
+### Get ONE observation by username (astro_user2)
+GET http://localhost:3000/observation/astro_user2
+### Create observation (star_seeker42)
 POST http://localhost:3000/observation HTTP/1.1
 Content-Type: application/json
 
     {
-        "observation": "NGC 869 and NGC 884 - Double Cluster",
-        "object_type": "Star Cluster",
-        "date": "2024-10-18",
-        "time": "22:15",
-        "time_zone": "GMT-5",
+        "username": "star_seeker42",
+        "observation": "Multiple shadow transits across Jupiter's surface",
+        "object_type": "Planet",
+        "date": "2024-03-15",
+        "time": "02:30",
+        "time_zone": "GMT-8",
         "location": {
-            "country": "USA",
-            "state": "Arizona",
-            "city": "Flagstaff",
+            "country": "Canada",
+            "state": "Alberta",
+            "city": "Banff",
             "coordinates": {
-                "latitude": 35.1983,
-                "longitude": -111.6513
+                "latitude": 51.1784,
+                "longitude": -115.5708
             }
         },
-        "telescope": {
-            "make": "Orion",
-            "serial_number": "SN987654"
+        "equipment": {
+            "equipment_type": "Telescope",
+            "make": "Takahashi",
+            "model": "FSQ-106EDX4",
+            "serial_number": "TK445566"
         },
-        "weather_conditions": "Clear skies with slight breeze",
-        "visibility_conditions": "Good",
-        "duration": "1.5 hours",
-        "notes": "Both clusters were visible and resolved individual stars. Great observation despite the slight breeze."
+        "weather_conditions": "Cold, dry night with exceptional clarity",
+        "visibility_conditions": "Outstanding - no light pollution",
+        "duration": "3 hours 15 minutes",
+        "notes": "Observed three of Jupiter's moons casting shadows simultaneously on the planet's surface. The Great Red Spot was also visible near the limb."
     }
-### Update observation duration (Saturn and its rings)
-PUT http://localhost:3000/observation/671349ed980e3ea245f1d93e HTTP/1.1
+### Update observation by username -CHANGE SERIAL NUMBER- (celestial_observer)
+PUT http://localhost:3000/observation/celestial_observer HTTP/1.1
 Content-Type: application/json
 
     {
-        "observation": "Saturn and its rings",
-        "object_type": "Planet",
-        "date": "2024-10-09",
-        "time": "20:00",
-        "time_zone": "GMT-5",
+        "username": "celestial_observer",
+        "observation": "Saw a stunning supernova in the Andromeda Galaxy",
+        "object_type": "Supernova",
+        "date": "2023-11-20",
+        "time": "23:15",
+        "time_zone": "GMT+2",
         "location": {
-            "country": "USA",
-            "state": "Illinois",
-            "city": "Chicago",
+            "country": "United Kingdom",
+            "state": "Scotland",
+            "city": "Edinburgh",
             "coordinates": {
-                "latitude": 41.8781,
-                "longitude": -87.6298
+                "latitude": 55.9533,
+                "longitude": -3.1883
             }
         },
-        "telescope": {
-            "make": "Celestron",
-            "serial_number": "SN789456"
+        "equipment": {
+            "equipment_type": "Telescope",
+            "make": "Meade",
+            "model": "LX90-ACF",
+            "serial_number": "DM658497"
         },
-        "weather_conditions": "Partly cloudy",
-        "visibility_conditions": "Fair",
-        "duration": "2 hours",
-        "notes": "Rings were visible; great experience!"
+        "weather_conditions": "Crisp, clear night sky",
+        "visibility_conditions": "Excellent",
+        "duration": "1 hour 30 minutes",
+        "notes": "The supernova was an incredible sight, with a bright blue-white core and expanding outer layers."
     }
-### Delete ovservation
-DELETE http://localhost:3000/observation/6713e36e87cbe705726a5497 HTTP/1.1
+### Delete observation (star_seeker42)
+DELETE http://localhost:3000/observation/star_seeker42 HTTP/1.1
   
 // PRODUCTION Deploy
 ### Get all users

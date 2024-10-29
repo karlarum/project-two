@@ -1,6 +1,7 @@
 const express = require('express');
 const { getUsers, getSingle, createUser, updateUser, deleteUser } = require('../controllers/user');
 const { validateUser } = require('../middleware/validation');
+
 const router = express.Router();
 
 router.route('/')
