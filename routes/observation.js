@@ -1,6 +1,6 @@
 const express = require('express');
 const { getObservations, getSingleObservation, createObservation, updateObservation, deleteObservation } = require('../controllers/observation');
-const { validateObservation } = require('../middleware/validation');
+const { validateUsername, validateObservation } = require('../middleware/validation');
 
 const router = express.Router();
 
@@ -9,8 +9,8 @@ router.route('/')
   .post(validateObservation, createObservation);
 
 router.route('/:username')
-  .get(getSingleObservation)
+  .get(validateUsername, getSingleObservation)
   .put(validateObservation, updateObservation)
-  .delete(deleteObservation);
+  .delete(validateUsername, deleteObservation);
 
 module.exports = router;

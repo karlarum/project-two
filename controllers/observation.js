@@ -134,7 +134,7 @@ const deleteObservation = async (req, res) => {
         if (result.deletedCount === 0) {
             return res.status(404).send({ message: 'No observation found for this username.' });
         }
-        return res.status(204).send();
+        return res.status(200).send({ message: 'User successfully deleted.' });
     } catch (err) {
         console.error('Error deleting observation:', err);
         return res.status(500).json({ message: 'Some error occurred while deleting the observation.', error: err });

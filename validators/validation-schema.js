@@ -1,5 +1,9 @@
 const Joi = require('joi');
 
+const usernameSchema = Joi.object({
+    username: Joi.string().min(5).required()
+});
+
 const userSchema = Joi.object({
     username: Joi.string().min(5).required(),
     contact_information: Joi.object({
@@ -41,6 +45,7 @@ const observationSchema = Joi.object({
 }).optional({ stripUnknown: true });
 
 module.exports = {
+    usernameSchema,
     userSchema,
     observationSchema
 };

@@ -1,6 +1,6 @@
 const express = require('express');
 const { getUsers, getSingle, createUser, updateUser, deleteUser } = require('../controllers/user');
-const { validateUser } = require('../middleware/validation');
+const { validateUsername, validateUser } = require('../middleware/validation');
 
 const router = express.Router();
 
@@ -9,8 +9,8 @@ router.route('/')
     .post(validateUser, createUser);
 
 router.route('/:username')
-    .get(getSingle)
+    .get(validateUsername, getSingle)
     .put(validateUser, updateUser)
-    .delete(deleteUser);
+    .delete(validateUsername, deleteUser);
 
 module.exports = router;
