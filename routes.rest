@@ -3,7 +3,7 @@
 ### Get all users
 GET http://localhost:3000/user
 ### Get user by username (astro_enthusiast)
-GET http://localhost:3000/user/astro_enthusiast
+GET http://localhost:3000/user/as
 ### Create user (celestial_wanderer)
 POST http://localhost:3000/user HTTP/1.1
 Content-Type: application/json
@@ -108,8 +108,8 @@ DELETE http://localhost:3000/observation/star_seeker42 HTTP/1.1
 // PRODUCTION Deploy
 ### Get all users
 GET https://project-two-hu6p.onrender.com/user
-### Get user by ID (cosmic dreamer)
-GET https://project-two-hu6p.onrender.com/user/671349a2980e3ea245f1d936
+### Get user by username (cosmic dreamer)
+GET https://project-two-hu6p.onrender.com/user/cosmic_dreamer
 ### Create user
 POST https://project-two-hu6p.onrender.com/user HTTP/1.1
 Content-Type: application/json
@@ -118,7 +118,7 @@ Content-Type: application/json
         "username": "celestial_wanderer",
         "contact_information": {
             "email": "wanderer@example.com",
-            "phone_number": "+1-345-876-1234",
+            "phone_number": "4567892589",
             "preferred_contact": "phone"
         },
         "equipment": {
@@ -132,37 +132,38 @@ Content-Type: application/json
         }
     }
 ### Update user email (cosmic dreamer)
-PUT https://project-two-hu6p.onrender.com/user/671349a2980e3ea245f1d936 HTTP/1.1
+PUT https://project-two-hu6p.onrender.com/user/celestial_wanderer HTTP/1.1
 Content-Type: application/json
 
     {
-        "username": "cosmic_dreamer",
+        "username": "celestial_wanderer",
         "contact_information": {
-            "email": "cosmicdream@gmail.com",
-            "phone_number": "+1-369-258-0147",
+            "email": "wanderer@example.com",
+            "phone_number": "+1-156-456-7891",
             "preferred_contact": "phone"
         },
         "equipment": {
             "equipment_type": "Telescope",
             "make": "Orion",
-            "model": "StarBlast 4.5",
-            "serial_number": "SN321098"
+            "model": "SkyQuest XT8",
+            "serial_number": "SN987654"
         },
         "observation_log": {
             "observations": []
         }
     }
 ### Delete user (celestial wanderer)
-DELETE https://project-two-hu6p.onrender.com/user/6713f2646ef9b6b5181be454 HTTP/1.1
+DELETE https://project-two-hu6p.onrender.com/user/celestial_wanderer HTTP/1.1
 ### Get all observations
 GET https://project-two-hu6p.onrender.com/observation
-### Get observation by ID (jupiter and its moons)
-GET https://project-two-hu6p.onrender.com/observation/671349ed980e3ea245f1d93b
-### Create observation (double cluster)
+### Get observation by username (astro_user7)
+GET https://project-two-hu6p.onrender.com/observation/astro_user7
+### Create observation (astro_user12)
 POST https://project-two-hu6p.onrender.com/observation HTTP/1.1
 Content-Type: application/json
 
     {
+        "username": "astro_user12",
         "observation": "NGC 869 and NGC 884 - Double Cluster",
         "object_type": "Star Cluster",
         "date": "2024-10-18",
@@ -179,6 +180,7 @@ Content-Type: application/json
         },
         "telescope": {
             "make": "Orion",
+            "model": "PowerSeeker7000",
             "serial_number": "SN987654"
         },
         "weather_conditions": "Clear skies with slight breeze",
@@ -187,32 +189,34 @@ Content-Type: application/json
         "notes": "Both clusters were visible and resolved individual stars. Great observation despite the slight breeze."
     }
 ### Update observation -Saturn- duration (3 hours)
-PUT https://project-two-hu6p.onrender.com/observation/671349ed980e3ea245f1d93e HTTP/1.1
+PUT https://project-two-hu6p.onrender.com/observation/astro_user12 HTTP/1.1
 Content-Type: application/json
 
     {
-        "observation": "Saturn and its rings",
-        "object_type": "Planet",
-        "date": "2024-10-09",
-        "time": "20:00",
+        "username": "astro_user12",
+        "observation": "NGC 869 and NGC 884 - Single Cluster",
+        "object_type": "Star Cluster",
+        "date": "2024-10-18",
+        "time": "22:15",
         "time_zone": "GMT-5",
         "location": {
             "country": "USA",
-            "state": "Illinois",
-            "city": "Chicago",
+            "state": "Arizona",
+            "city": "Flagstaff",
             "coordinates": {
-                "latitude": 41.8781,
-                "longitude": -87.6298
+                "latitude": 35.1983,
+                "longitude": -111.6513
             }
         },
         "telescope": {
-            "make": "Celestron",
-            "serial_number": "SN789456"
+            "make": "Orion",
+            "model": "PowerSeeker7000",
+            "serial_number": "SN987654"
         },
-        "weather_conditions": "Partly cloudy",
-        "visibility_conditions": "Fair",
-        "duration": "3 hours",
-        "notes": "Rings were visible; great experience!"
+        "weather_conditions": "Clear skies with slight breeze",
+        "visibility_conditions": "Good",
+        "duration": "1.5 hours",
+        "notes": "Both clusters were visible and resolved individual stars. Great observation despite the slight breeze."
     }
-### Delete observation (double cluster)
-DELETE https://project-two-hu6p.onrender.com/observation/6713f3406ef9b6b5181be455 HTTP/1.1
+### Delete observation (astro_user12)
+DELETE https://project-two-hu6p.onrender.com/observation/astro_user12 HTTP/1.1
