@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomy Observation Log</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Astronomy Observation Log</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#log-observation.html">Log Observation</a>
+            <a href="observations.html">Recent Observations</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <section id="log-observation">
+        <h2>Log a New Observation</h2>
+        <form id="observation-form">
+            <label for="date">Date and Time:</label>
+            <input type="datetime-local" id="date" name="date">
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter location">
+
+            <label for="object">Celestial Object:</label>
+            <input type="text" id="object" name="object" placeholder="E.g., Jupiter, Andromeda Galaxy">
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes" placeholder="Description of your observation"></textarea>
+
+            <button type="submit">Submit Observation</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Astronomy Observation Log</p>
+        <nav>
+            <a href="#contact">Contact</a>
+        </nav>
+    </footer>
+
+</body>
+
+</html>
