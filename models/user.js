@@ -1,39 +1,29 @@
-module.exports = (mongoose) => {
-  const User = mongoose.model(
-    'User',
-    mongoose.Schema({
-      username: {
-        type: String,
-        required: true,
-        unique: true,
-        minlength: 5
-      },
-      contact_information: {
-        email: {
-          type: String,
-          required: true,
-          unique: true
-        },
-        phone_number: {
-          type: String,
-          required: true,
-          match: /^[0-9]{10,15}$/
-        },
-        preferred_contact: {
-          type: String,
-          required: true,
-          enum: ['email', 'phone']
-        }
-      },
-      observation_log: {
-        observations: {
-          type: [String],
-          default: []
-        }
-      }
-    }),
-    'user'
-  );
+const mongoose = require('mongoose')
 
-  return User;
-};
+const UserSchema = new mongoose.Schema({
+  googleId: {
+    type: String,
+    required: true,
+  },
+  displayName: {
+    type: String,
+    required: true,
+  },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+})
+
+module.exports = mongoose.model('User', UserSchema)

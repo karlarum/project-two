@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/api-docs": {
+    "/": {
       "get": {
         "description": "",
         "responses": {
@@ -21,7 +21,121 @@
         }
       }
     },
-    "/user/": {
+    "/dashboard": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/observations/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/observations/{username}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/": {
       "get": {
         "description": "",
         "responses": {
@@ -42,13 +156,19 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
+                "googleId": {
                   "example": "any"
                 },
-                "contact_information": {
+                "displayName": {
                   "example": "any"
                 },
-                "observation_log": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "image": {
                   "example": "any"
                 }
               }
@@ -68,7 +188,7 @@
         }
       }
     },
-    "/user/{username}": {
+    "/users/{username}": {
       "get": {
         "description": "",
         "parameters": [
@@ -109,13 +229,16 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
+                "displayName": {
                   "example": "any"
                 },
-                "contact_information": {
+                "firstName": {
                   "example": "any"
                 },
-                "observation_log": {
+                "lastName": {
+                  "example": "any"
+                },
+                "image": {
                   "example": "any"
                 }
               }
@@ -163,189 +286,32 @@
         }
       }
     },
-    "/observation/": {
+    "/users/auth/google": {
       "get": {
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "example": "any"
-                },
-                "observation": {
-                  "example": "any"
-                },
-                "object_type": {
-                  "example": "any"
-                },
-                "date": {
-                  "example": "any"
-                },
-                "time": {
-                  "example": "any"
-                },
-                "location": {
-                  "example": "any"
-                },
-                "equipment": {
-                  "example": "any"
-                },
-                "weather_conditions": {
-                  "example": "any"
-                },
-                "visibility_conditions": {
-                  "example": "any"
-                },
-                "duration": {
-                  "example": "any"
-                },
-                "notes": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       }
     },
-    "/observation/{username}": {
+    "/users/auth/google/callback": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
-      },
-      "put": {
+      }
+    },
+    "/users/auth/logout": {
+      "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "observation": {
-                  "example": "any"
-                },
-                "object_type": {
-                  "example": "any"
-                },
-                "date": {
-                  "example": "any"
-                },
-                "time": {
-                  "example": "any"
-                },
-                "location": {
-                  "example": "any"
-                },
-                "equipment": {
-                  "example": "any"
-                },
-                "weather_conditions": {
-                  "example": "any"
-                },
-                "visibility_conditions": {
-                  "example": "any"
-                },
-                "duration": {
-                  "example": "any"
-                },
-                "notes": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "username",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "default": {
+            "description": ""
           }
         }
       }

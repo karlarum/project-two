@@ -16,12 +16,12 @@ const getUsers = async (req, res) => {
 
 const getSingle = async (req, res) => {
     try {
-        const username = req.params.username;
-        const data = await User.find({ username: username });
-        if (!data || data.length === 0) {
-            return res.status(404).json({ message: 'No user found for this username.' });
+        const userId = req.params.id;
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found.' });
         }
-        res.status(200).send(data);
+        res.status(200).send(user);
     } catch (err) {
         console.error('Error fetching user:', err);
         res.status(500).send({
@@ -35,15 +35,11 @@ const createUser = async (req, res) => {
     try {
         await userSchema.validateAsync(req.body, { abortEarly: false });
         const newUser = new User({
-            username: req.body.username,
-            contact_information: {
-                email: req.body.contact_information.email,
-                phone_number: req.body.contact_information.phone_number,
-                preferred_contact: req.body.contact_information.preferred_contact
-            },
-            observation_log: {
-                observations: req.body.observation_log.observations || []
-            }
+            googleId: req.body.googleId,
+            displayName: req.body.displayName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            image: req.body.image
         });
 
         const user = await newUser.save();
@@ -61,25 +57,22 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-    const username = req.params.username;
-    if (!username) {
-        return res.status(400).send({ message: 'Invalid Username Supplied' });
+    const userId = req.params.id;
+    if (!userId) {
+        return res.status(400).send({ message: 'Invalid User ID Supplied' });
     }
     try {
         await userSchema.validateAsync(req.body, { abortEarly: false });
-        const user = await User.findOne({ username: username });
+        const user = await User.findById(userId);
         if (!user) {
             return res.status(404).send({ message: 'User not found' });
         }
-        user.username = req.body.username;
-        user.contact_information = {
-            email: req.body.contact_information.email,
-            phone_number: req.body.contact_information.phone_number,
-            preferred_contact: req.body.contact_information.preferred_contact,
-        };
-        if (req.body.observation_log && req.body.observation_log.observations) {
-            user.observation_log.observations = req.body.observation_log.observations;
-        }
+
+        user.displayName = req.body.displayName;
+        user.firstName = req.body.firstName;
+        user.lastName = req.body.lastName;
+        user.image = req.body.image;
+
         await user.save();
         res.status(204).send();
     } catch (err) {
@@ -96,13 +89,13 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const username = req.params.username;
-        if (!username) {
-            return res.status(400).send({ message: 'Invalid Username Supplied' });
+        const userId = req.params.id;
+        if (!userId) {
+            return res.status(400).send({ message: 'Invalid User ID Supplied' });
         }
-        const result = await User.deleteOne({ username: username });
+        const result = await User.deleteOne({ _id: userId });
         if (result.deletedCount === 0) {
-            return res.status(404).send({ message: 'No user found for this username.' });
+            return res.status(404).send({ message: 'No user found for this ID.' });
         }
         return res.status(200).send({ message: 'User successfully deleted.' });
     } catch (err) {
