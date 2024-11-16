@@ -1,12 +1,7 @@
-const dbConfig = require('../db/connect.js');
-const mongoose = require('mongoose');
+const User = require('./user');
+const Observation = require('./observation');
 
-mongoose.Promise = global.Promise;
-
-const db = {};
-db.mongoose = mongoose;
-db.url = dbConfig.url;
-db.observation = require('./observation.js');
-db.user = require('./user.js');
-
-module.exports = db;
+module.exports = {
+  User,
+  Observation
+};

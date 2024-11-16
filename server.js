@@ -19,15 +19,27 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // Connect to the database
-const db = require('./models');
-db.mongoose
-  .connect(db.url)
+// const db = require('./models');
+// db.mongoose
+//   .connect(db.url)
+//   .then(() => {
+//     console.log("DB Connected");
+//   })
+//   .catch((err) => {
+//     console.log('Cannot connect to the database!', err);
+//     process.exit();
+//   });
+
+const connectDB = require('./db/connect');
+
+// Connect to MongoDB
+connectDB()
   .then(() => {
-    console.log("DB Connected");
+    console.log('Database connected successfully');
   })
   .catch((err) => {
-    console.log('Cannot connect to the database!', err);
-    process.exit();
+    console.error('Database connection error:', err);
+    process.exit(1);
   });
 
 // Body parser middleware
@@ -70,9 +82,18 @@ app.engine(
 app.set('view engine', '.hbs');
 
 // Sessions middleware for user authentication persistence
+// app.use(
+//   session({
+//     secret: 'keyboard cat',
+//     resave: false,
+//     saveUninitialized: false,
+//     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+//   })
+// );
+
 app.use(
   session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
@@ -91,6 +112,7 @@ app.use(function (req, res, next) {
 
 // Routes
 app.use('/', require('./routes/index'));
+app.use('/auth', require('./routes/auth'));
 app.use('/user', require('./routes/user'));
 app.use('/observations', require('./routes/observations'));
 

@@ -1,29 +1,43 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   googleId: {
     type: String,
     required: true,
+    unique: true
   },
   displayName: {
     type: String,
-    required: true,
+    required: true
   },
   firstName: {
     type: String,
-    required: true,
+    required: true
   },
   lastName: {
     type: String,
-    required: true,
+    required: true
+  },
+  email: {
+    type: String,
+    required: false
   },
   image: {
-    type: String,
+    type: String
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
-})
+  lastLogin: {
+    type: Date,
+    default: Date.now
+  }
+});
 
-module.exports = mongoose.model('User', UserSchema)
+UserSchema.methods.updateLoginTime = function() {
+  this.lastLogin = Date.now();
+  return this.save();
+};
+
+module.exports = mongoose.model('User', UserSchema);
