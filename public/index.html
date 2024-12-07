@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroLog Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>AstroLog</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard">
+            <div class="welcome-header">
+                <img src="" id="profile-img" class="profile-img" alt="Profile">
+                <h2>Welcome, <span id="user-name">Astronomer</span>!</h2>
+            </div>
+            
+            <div class="content">
+                <h3>Observer Profile</h3>
+                <form id="profile-form" class="profile-form">
+                    <div class="form-group">
+                        <label for="location">Primary Observation Location:</label>
+                        <input type="text" id="location" name="location" placeholder="Where do you usually stargaze?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="equipment">Primary Equipment:</label>
+                        <select id="equipment" name="equipment">
+                            <option value="naked-eye">Naked Eye</option>
+                            <option value="binoculars">Binoculars</option>
+                            <option value="telescope-small">Small Telescope (< 6")</option>
+                            <option value="telescope-medium">Medium Telescope (6-12")</option>
+                            <option value="telescope-large">Large Telescope (> 12")</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Observing Experience:</label>
+                        <select id="experience" name="experience">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interests">Areas of Interest:</label>
+                        <select id="interests" name="interests" multiple>
+                            <option value="planets">Planets</option>
+                            <option value="deepsky">Deep Sky Objects</option>
+                            <option value="variable">Variable Stars</option>
+                            <option value="comets">Comets & Asteroids</option>
+                            <option value="moon">Lunar Observation</option>
+                            <option value="sun">Solar Observation</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="bio">About My Astronomy Journey:</label>
+                        <textarea id="bio" name="bio" placeholder="Share your astronomy background and interests..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Save Profile</button>
+                </form>
+            </div>
+            <div class="content">
+                <h3>Log New Observation</h3>
+                
+                <form id="observation-form" class="observation-form">
+                    <div class="form-group">
+                        <label for="observation-date">Date and Time:</label>
+                        <input type="datetime-local" id="observation-date" name="date" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="object-type">Object Type:</label>
+                        <select id="object-type" name="objectType" required>
+                            <option value="planet">Planet</option>
+                            <option value="moon">Moon</option>
+                            <option value="star">Star</option>
+                            <option value="galaxy">Galaxy</option>
+                            <option value="nebula">Nebula</option>
+                            <option value="cluster">Star Cluster</option>
+                            <option value="comet">Comet</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="object-name">Object Name:</label>
+                        <input type="text" id="object-name" name="objectName" placeholder="e.g., Jupiter, M31, Moon" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="conditions">Viewing Conditions:</label>
+                        <select id="conditions" name="conditions">
+                            <option value="excellent">Excellent</option>
+                            <option value="good">Good</option>
+                            <option value="fair">Fair</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="notes">Observation Notes:</label>
+                        <textarea id="notes" name="notes" placeholder="Describe what you observed..." required></textarea>
+                    </div>
+            
+                    <button type="submit" class="submit-btn">Save Observation</button>
+                </form>
+            
+                <!-- List of Recent Observations -->
+                <div class="observations-list">
+                    <h4>Recent Observations</h4>
+                    <div id="observation-items" class="observation-items">
+                        <!-- Observations will be added here via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,7 +4,7 @@ module.exports = {
             return next()
         } else {
             res.redirect('/')
-        }
+        }          
     },
     ensureGuest: function (req, res, next) {
         if (!req.isAuthenticated()) {
