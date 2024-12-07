@@ -22,12 +22,17 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 
-router.get('/google', 
-    passport.authenticate('google', { 
-        scope: ['profile', 'email'],
-        prompt: 'select_account'
-    })
-);
+router.get('/google', (req, res, next) => {
+    // debugging
+    console.log('Starting Google OAuth flow...');
+    console.log('Current environment:', process.env.NODE_ENV);
+    console.log('Host:', req.get('host'));
+    console.log('Protocol:', req.protocol);
+  
+    passport.authenticate('google', {
+      scope: ['profile', 'email'],
+    })(req, res, next);
+  });
 
 router.get('/google/callback',
     passport.authenticate('google', { 

@@ -16,6 +16,7 @@ module.exports = (passport) => {
                 proxy: true
             },
             async (accessToken, refreshToken, profile, done) => {
+                console.log('Callback URL being used:', 'https://project-two-hu6p.onrender.com/auth/google/callback');
                 try {
                     let user = await User.findOne({ googleId: profile.id });
                     if (!user) {
