@@ -7,16 +7,13 @@ module.exports = (passport) => {
     console.log('GOOGLE_CLIENT_ID:', process.env.GOOGLE_CLIENT_ID);
     console.log('GOOGLE_CLIENT_SECRET exists:', !!process.env.GOOGLE_CLIENT_SECRET);
 
-    const callbackURL = process.env.NODE_ENV === 'production'
-    ? 'https://project-two-hu6p.onrender.com/auth/google/callback'
-    : 'http://localhost:3000/auth/google/callback';
-
     passport.use(
         new GoogleStrategy(
             {
                 clientID: process.env.GOOGLE_CLIENT_ID,
                 clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-                callbackURL: callbackURL,
+                callbackURL: 'https://project-two-hu6p.onrender.com/auth/google/callback',
+                proxy: true
             },
             async (accessToken, refreshToken, profile, done) => {
                 try {

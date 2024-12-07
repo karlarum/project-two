@@ -11,7 +11,7 @@ const doc = {
 
 const outputFile = './swagger.json';
 const endpointsFiles = [
-  './routes/index.js',
+  './routes/dashboard.js',
   './routes/observation.js',
   './routes/user.js',
   './routes/auth.js'

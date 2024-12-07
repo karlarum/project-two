@@ -77,7 +77,7 @@ app.use(function (req, res, next) {
 
 // Routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes/dashboard'));
 app.use('/auth', require('./routes/auth'));
 app.use('/user', require('./routes/user'));
 app.use('/observations', require('./routes/observation'));
